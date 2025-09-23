@@ -10,6 +10,5 @@ require (
 	github.com/hugolify/hugolify-theme v1.26.3 // indirect
 	github.com/midzer/tobii v3.0.0+incompatible // indirect
 	github.com/orestbida/cookieconsent v3.1.0+incompatible // indirect
-	github.com/theNewDynamic/gohugo-theme-ananke v0.0.0-20240928043059-33178c0d498e // indirect
 	github.com/twbs/icons v1.13.1 // indirect
 )
