@@ -12,7 +12,10 @@ if (token) {
   fetch("/.netlify/identity/verify", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token })
+    body: JSON.stringify({
+      token: token,
+      type: "signup"
+    })
   })
   .then(res => res.json())
   .then(data => {
