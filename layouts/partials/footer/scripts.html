@@ -1,0 +1,21 @@
+<script>
+const params = new URLSearchParams(window.location.search);
+const token = params.get("invite_token");
+
+console.log(params);
+console.log(token);
+
+if (token) {
+  console.log("identity");
+  fetch("/.netlify/identity/verify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token })
+  })
+  .then(res => res.json())
+  .then(user => {
+    console.log("Utilisateur connecté :", user);
+    // ici tu peux stocker le token ou mettre en sessionStorage
+  });
+}
+</script>
