@@ -2,6 +2,12 @@
 
 export default async function handler(request, context) {
   const url = new URL(request.url);
+  
+  // ⚠️ Bypass pour les fichiers statiques
+  if (url.pathname.endsWith(".css") || url.pathname.endsWith(".js")) {
+    return context.next();
+  }
+
   const token = url.searchParams.get("token");
 
   // Récupération des variables d'environnement (Edge = Deno.env.get)
