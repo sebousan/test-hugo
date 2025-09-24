@@ -1,10 +1,12 @@
 <script>
-const params = new URLSearchParams(window.location.search);
+const hash = window.location.hash.substring(1); // enlève le #
+const params = new URLSearchParams(hash);
 const token = params.get("invite_token");
 
+console.log(hash);
 console.log(params);
 console.log(token);
-
+https://hugolify-test.netlify.app/#invite_token=Bv4tmz2LU8gtbz5gs3dFWQ
 if (token) {
   console.log("identity");
   fetch("/.netlify/identity/verify", {
@@ -13,9 +15,22 @@ if (token) {
     body: JSON.stringify({ token })
   })
   .then(res => res.json())
-  .then(user => {
-    console.log("Utilisateur connecté :", user);
-    // ici tu peux stocker le token ou mettre en sessionStorage
+  .then(data => {
+    console.log(data);
+
+    if (data.access_token) {
+      // Stocker les infos en session (pas recommandé en localStorage pour la sécurité)
+      sessionStorage.setItem("user", JSON.stringify(data.user));
+      sessionStorage.setItem("access_token", data.access_token);
+      sessionStorage.setItem("refresh_token", data.refresh_token);
+
+      console.log("Utilisateur connecté :", data.user);
+
+      // Rediriger vers une page protégée par exemple
+      {{/*  window.location.href = "/restricted/";  */}}
+    } else {
+      console.error("Échec de la vérification :", data);
+    }
   });
 }
 </script>
