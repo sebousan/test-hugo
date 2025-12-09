@@ -3,8 +3,8 @@ draft: false
 title: Lorem Ipsum Post
 description: Lorem Ipsum Post
 tags:
-  - ipsum
+  - /content/tags/ipsum/_index.md
 categories:
-  - lorem
+  - /content/categories/lorem/_index.md
 ---
 Lorem Ipsum Post
